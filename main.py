@@ -1,7 +1,7 @@
 from views import View
 
 
-
+# Created by Arush
 if __name__ == "__main__":
 
     # db = Database("localhost", "appuser", "appuser", "cms_live")
