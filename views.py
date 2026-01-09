@@ -19,10 +19,6 @@ from numpy.ma.core import shape
 from model import *
 # from numpy.ma.core import shape
 
-
-
-
-
 class View:
     def __init__(self):
         # self.checkbutton = None

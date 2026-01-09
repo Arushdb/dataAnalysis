@@ -1,7 +1,7 @@
 from database import Database
 import mysql.connector
 from mysql.connector import Error
-from model import getallsubject_batch,insert_marks_batch,getevaluationid_batch
+from model import getallsubject_batch, insert_marks_batch, getevaluationid_batch, delete_marks_batch
 from datetime import datetime
 import numpy as np
 
@@ -12,10 +12,11 @@ date_string = "2023-11-12"
 class SubjectAnalysis :
 
     def __init__(self):
-        self.ssd = ["2023-07-01", "2024-01-01"]
+        self.ssd = ["2024-04-25", "2024-11-05"]
 
     def mymain(self):
         # rs = getallsubject()
+        # delete_marks_batch()
         rs = getallsubject_batch()
         print(rs)
 
@@ -23,6 +24,7 @@ class SubjectAnalysis :
             print(rsobj['semester_start_date'])
             ssd=rsobj['semester_start_date']
             pck=rsobj['program_course_key']
+            entity=rsobj['entity_id']
             pgmid=pck[0:7]
             print(pgmid)
 
@@ -32,7 +34,7 @@ class SubjectAnalysis :
                 id=item['evaluation_id']
                 idname=item['evaluation_id_name']
                 print(evids)
-                rs1=insert_marks_batch(subject,ssd,pck,id)
+                rs1=insert_marks_batch(subject,ssd,pck,id,entity)
                 print(rs1)
                 # print(rs1)
                 # marks = []
@@ -51,8 +53,8 @@ class SubjectAnalysis :
         #     rs=getallsubject()
         #
         #     print(rs);
-# sa=SubjectAnalysis()
-# sa.mymain()
+sa=SubjectAnalysis()
+sa.mymain()
 
 
 
